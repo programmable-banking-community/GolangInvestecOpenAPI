@@ -42,8 +42,9 @@ func main() {
     // need to have secret and clientID then fill in these vars.
     secret := ""
     clientID := ""
+    apiKey := ""
 
-    clt := client.NewBankingClient(secret, clientID)
+    clt := client.NewBankingClient(secret, clientID, apiKey)
 
     // OAuth to the API
     if err := clt.GetAccessToken(); err != nil {

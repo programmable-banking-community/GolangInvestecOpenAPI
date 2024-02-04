@@ -8,22 +8,24 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/t4ke0/investecOpenAPI/api"
+	"github.com/devinpearson/investec-open-api-sdk-go/api"
 )
 
 const APIurl string = "https://openapi.investec.com"
 
 type BankingClient struct {
 	UserCreds   string
+	ApiKey      string
 	AccessToken string
 
 	httpClient *http.Client
 }
 
-func NewBankingClient(secret, clientID string) BankingClient {
+func NewBankingClient(secret, clientID, apiKey string) BankingClient {
 	userCreds := base64.StdEncoding.EncodeToString([]byte(fmt.Sprintf("%s:%s", clientID, secret)))
 	return BankingClient{
 		UserCreds:  userCreds,
+		ApiKey:     apiKey,
 		httpClient: new(http.Client),
 	}
 }
@@ -54,6 +56,7 @@ func (b BankingClient) requestAPI(url, method string, mode authMode) (*http.Resp
 	case basic:
 		req.Header.Set("Authorization", fmt.Sprintf("Basic %s", b.UserCreds))
 		req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+		req.Header.Set("x-api-key", b.ApiKey)
 	case bearer:
 		req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", b.AccessToken))
 		req.Header.Set("Accept", "application/json")
