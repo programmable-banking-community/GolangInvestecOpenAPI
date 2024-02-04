@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	client "github.com/devinpearson/investec-open-api-sdk-go/api"
+	client "github.com/devinpearson/investec-open-api-sdk-go"
 )
 
 // fill in the following vars
