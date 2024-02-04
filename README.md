@@ -3,7 +3,7 @@
 This repository is crafted with ❤️ by our talented community members. It's a space for everyone to use, contribute to, and share. While it aligns with the spirit of our community, please note that this repo is not directly endorsed or supported by Investec. Always exercise caution and discretion when using or contributing to community-driven projects.
 
 
-# investecOpenAPI
+# Investec Open API SDK for Go
 
 
 ## installation
@@ -17,13 +17,13 @@ go mod init <project name>
 ```
 
 ```bash
-go get -v github.com/t4ke0/investecOpenAPI
+go get -v github.com/devinpearson/investec-open-api-sdk-go
 ```
 
 
 ## Usage
 
-before you start you might need to have the `clientID` and `secret` from the API provider.
+before you start you will need to have the `clientID`, `secret` and `apiKey` from Investec.
 then you are good to proceed.
 
 ```golang
@@ -32,7 +32,7 @@ package main
 import (
     ***
 
-	client "github.com/t4ke0/investecOpenAPI"
+	client "github.com/devinpearson/investec-open-api-sdk-go"
 
     ***
 )
