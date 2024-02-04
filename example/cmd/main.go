@@ -3,18 +3,19 @@ package main
 import (
 	"log"
 
-	client "github.com/t4ke0/investecOpenAPI"
+	client "github.com/devinpearson/investec-open-api-sdk-go"
 )
 
 // fill in the following vars
 var (
 	clientID string = ""
 	secret   string = ""
+	apiKey   string = ""
 )
 
 func main() {
 
-	clt := client.NewBankingClient(secret, clientID)
+	clt := client.NewBankingClient(secret, clientID, apiKey)
 
 	if err := clt.GetAccessToken(); err != nil {
 		log.Fatal(err)
